@@ -18,13 +18,7 @@ class MainActivity : AppCompatActivity() {
     setContentView(R.layout.activity_main)
     val placesApi = PlaceAPI()
     placesApi.initialize(getString(R.string.mapsApiKey))
-    autocomplete.setAdapter(
-      PlacesAutoCompleteAdapter(
-        this,
-        R.layout.autocomplete_list_item,
-        placesApi
-      )
-    )
+    autocomplete.setAdapter(PlacesAutoCompleteAdapter(this, placesApi))
     autocomplete.onItemClickListener =
       AdapterView.OnItemClickListener { parent, _, position, _ ->
         val place = parent.getItemAtPosition(position) as Place

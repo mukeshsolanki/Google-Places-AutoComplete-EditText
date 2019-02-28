@@ -13,11 +13,10 @@ import android.widget.TextView
  * Created by mukeshsolanki on 28/02/19.
  */
 class PlacesAutoCompleteAdapter(
-  val mContext: Context,
-  val mResource: Int,
+  mContext: Context,
   val placesApi: PlaceAPI
 ) :
-  ArrayAdapter<Place>(mContext, mResource), Filterable {
+  ArrayAdapter<Place>(mContext, R.layout.autocomplete_list_item), Filterable {
 
   var resultList: ArrayList<Place>? = ArrayList()
 
@@ -30,13 +29,20 @@ class PlacesAutoCompleteAdapter(
   }
 
   override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
-    val view: View
-    val inflater = mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-    view = inflater.inflate(R.layout.autocomplete_list_item, null, false)
-    val autocompleteTextView = view.findViewById(R.id.autocompleteText) as TextView
+    var view = convertView
+    val viewHolder: ViewHolder
+    if (view == null) {
+      viewHolder = ViewHolder()
+      val inflater = LayoutInflater.from(context)
+      view = inflater.inflate(R.layout.autocomplete_list_item, parent, false)
+      viewHolder.description = view.findViewById(R.id.autocompleteText) as TextView
+      view.tag = viewHolder
+    } else {
+      viewHolder = view.tag as ViewHolder
+    }
     val place = resultList!![position]
-    autocompleteTextView.text = place.description
-    return view
+    viewHolder.description?.text = place.description
+    return view!!
   }
 
   override fun getFilter(): Filter {
@@ -59,5 +65,9 @@ class PlacesAutoCompleteAdapter(
         return filterResults
       }
     }
+  }
+
+  internal class ViewHolder {
+    var description: TextView? = null
   }
 }
