@@ -1,6 +1,6 @@
 # Backers
 
-Places AutoComplete EditText is an independent project with ongoing development and support made possible thanks to donations made by these awesome backers. If you'd like to join them, please consider:
+Google Places AutoComplete EditText is an independent project with ongoing development and support made possible thanks to donations made by these awesome backers. If you'd like to join them, please consider:
 
 - [Become a backer or sponsor on Patreon](https://www.patreon.com/mukeshsolanki).
 - [One-time donation via PayPal](https://www.paypal.me/mukeshsolanki)

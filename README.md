@@ -1,8 +1,8 @@
-<h1 align="center">Places AutoComplete EditText</h1>
+<h1 align="center">Google Places AutoComplete EditText</h1>
 <p align="center">
 <a href="https://www.codacy.com/app/mukeshsolanki/Places-AutoComplete-EditText?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=mukeshsolanki/Places-AutoComplete-EditText&amp;utm_campaign=Badge_Grade"><img src="https://api.codacy.com/project/badge/Grade/e9f91e5cba1a4ebaaa51d532aa2afda8"/></a>
-  <a href="https://jitpack.io/#mukeshsolanki/Places-AutoComplete-EditText"> <img src="https://jitpack.io/v/mukeshsolanki/Places-AutoComplete-EditText/month.svg" /></a>
-  <a href="https://jitpack.io/#mukeshsolanki/Places-AutoComplete-EditText"> <img src="https://jitpack.io/v/mukeshsolanki/Places-AutoComplete-EditText.svg" /></a>
+  <a href="https://jitpack.io/#mukeshsolanki/Google-Places-AutoComplete-EditText"> <img src="https://jitpack.io/v/mukeshsolanki/Google-Places-AutoComplete-EditText/month.svg" /></a>
+  <a href="https://jitpack.io/#mukeshsolanki/Google-Places-AutoComplete-EditText"> <img src="https://jitpack.io/v/mukeshsolanki/Google-Places-AutoComplete-EditText.svg" /></a>
   <a href="https://circleci.com/gh/mukeshsolanki/Places-AutoComplete-EditText/tree/master"> <img src="https://circleci.com/gh/mukeshsolanki/Places-AutoComplete-EditText/tree/master.svg?style=shield" /></a>
   <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-blue.svg"/></a>
   <br /><br />
@@ -15,7 +15,7 @@
 
 # Supporting Places AutoComplete EditText
 
-Places AutoComplete EditText is an independent project with ongoing development and support made possible thanks to donations made by [these awesome backers](BACKERS.md#sponsors). If you'd like to join them, please consider:
+Google Places AutoComplete EditText is an independent project with ongoing development and support made possible thanks to donations made by [these awesome backers](BACKERS.md#sponsors). If you'd like to join them, please consider:
 
 - [Become a backer or sponsor on Patreon](https://www.patreon.com/mukeshsolanki).
 - [One-time donation via PayPal](https://www.paypal.me/mukeshsolanki)
@@ -38,7 +38,7 @@ allprojects {
 Step 2. Add the dependency
 ```java
 dependencies {
-        implementation 'com.github.mukeshsolanki:Places-AutoComplete-EditText:<latest-version>'
+        implementation 'com.github.mukeshsolanki:Google-Places-AutoComplete-EditText:<latest-version>'
 }
 ```
 
@@ -88,7 +88,7 @@ placesApi.fetchDetails("placeId", object : OnPlacesDetailsListener {
 Maintained by [Mukesh Solanki](https://www.github.com/mukeshsolanki)
 
 ## Contribution
-[![GitHub contributors](https://img.shields.io/github/contributors/mukeshsolanki/Places-AutoComplete-EditText.svg)](https://github.com/mukeshsolanki/Places-AutoComplete-EditText/graphs/contributors)
+[![GitHub contributors](https://img.shields.io/github/contributors/mukeshsolanki/Google-Places-AutoComplete-EditText.svg)](https://github.com/mukeshsolanki/Google-Places-AutoComplete-EditText/graphs/contributors)
 
 * Bug reports and pull requests are welcome.
 * Make sure you use [square/java-code-styles](https://github.com/square/java-code-styles) to format your code.
