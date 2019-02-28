@@ -3,12 +3,73 @@
   xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  android:gravity="center"
+  android:orientation="vertical"
+  android:padding="16dp"
   tools:context=".MainActivity">
 
   <AutoCompleteTextView
-    android:layout_width="200dp"
+    android:id="@+id/autoCompleteEditText"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:id="@+id/autocomplete"
-    android:hint="Type in your Location" />
+    android:hint="@string/type_in_your_location" />
+
+  <TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="8dp"
+    android:text="@string/street" />
+
+  <TextView
+    android:id="@+id/streetTextView"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    tools:text="Street" />
+
+  <TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="8dp"
+    android:text="@string/city" />
+
+  <TextView
+    android:id="@+id/cityTextView"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    tools:text="City" />
+
+  <TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="8dp"
+    android:text="@string/state" />
+
+  <TextView
+    android:id="@+id/stateTextView"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    tools:text="State" />
+
+  <TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="8dp"
+    android:text="Country" />
+
+  <TextView
+    android:id="@+id/countryTextView"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    tools:text="country" />
+
+  <TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="8dp"
+    android:text="Zip Code" />
+
+  <TextView
+    android:id="@+id/zipCodeTextView"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    tools:text="zipcode" />
 </LinearLayout>

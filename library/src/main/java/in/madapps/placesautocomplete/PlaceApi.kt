@@ -88,10 +88,7 @@ class PlaceAPI {
   }
 
   @Nullable
-  fun fetchDetails(
-    placeId: String,
-    listener: OnPlacesDetailsListener
-  ) {
+  fun fetchDetails(placeId: String, listener: OnPlacesDetailsListener) {
     if (TextUtils.isEmpty(apiKey)) {
       throw RuntimeException("Please initialize the api before using it")
     }
@@ -103,14 +100,9 @@ class PlaceAPI {
         val sb = StringBuilder(PLACES_API_BASE + TYPE_DETAIL + OUT_JSON)
         sb.append("?key=$apiKey")
         sb.append("$PARAM_PLACE_ID$placeId")
-
-        Log.d(TAG, sb.toString())
-
         val url = URL(sb.toString())
         conn = url.openConnection() as HttpURLConnection
         val inputStreamReader = InputStreamReader(conn.inputStream)
-
-        // Load the results into a StringBuilder
         var read: Int
         val buff = CharArray(1024)
         loop@ do {
@@ -120,17 +112,15 @@ class PlaceAPI {
             else -> break@loop
           }
         } while (true)
-
-        // Create a JSON object hierarchy from the results
         val jsonObj = JSONObject(jsonResults.toString())
         val resultJsonObject = jsonObj.getJSONObject("result")
         val addressArray = resultJsonObject.getJSONArray("address_components")
         val address = ArrayList<Address>()
-        (0..(addressArray.length() - 1)).forEach { i ->
+        (0 until addressArray.length()).forEach { i ->
           val addressObject = addressArray.getJSONObject(i)
           val addressTypeArray = addressObject.getJSONArray("types")
           val addressType = ArrayList<String>()
-          (0..(addressTypeArray.length() - 1)).forEach { j ->
+          (0 until addressTypeArray.length()).forEach { j ->
             addressType.add(addressTypeArray.getString(j))
           }
           address.add(

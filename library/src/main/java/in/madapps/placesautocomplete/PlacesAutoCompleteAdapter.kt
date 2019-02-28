@@ -12,10 +12,7 @@ import android.widget.TextView
 /**
  * Created by mukeshsolanki on 28/02/19.
  */
-class PlacesAutoCompleteAdapter(
-  mContext: Context,
-  val placesApi: PlaceAPI
-) :
+class PlacesAutoCompleteAdapter(mContext: Context, val placesApi: PlaceAPI) :
   ArrayAdapter<Place>(mContext, R.layout.autocomplete_list_item), Filterable {
 
   var resultList: ArrayList<Place>? = ArrayList()

@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">AndroidPlacesAutoCompleteEditText</string>
+  <string name="type_in_your_location">Type in your Location</string>
+  <string name="street">Street</string>
+  <string name="city">City</string>
+  <string name="state">State</string>
 </resources>
