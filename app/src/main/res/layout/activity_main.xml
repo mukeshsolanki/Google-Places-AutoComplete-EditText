@@ -3,6 +3,7 @@
   xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
+  android:background="@android:color/black"
   android:orientation="vertical"
   android:padding="16dp"
   tools:context=".MainActivity">
@@ -11,65 +12,78 @@
     android:id="@+id/autoCompleteEditText"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:hint="@string/type_in_your_location" />
+    android:background="@android:color/white"
+    android:hint="@string/type_in_your_location"
+    android:padding="8dp"
+    android:textColor="@android:color/white" />
 
   <TextView
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginTop="8dp"
-    android:text="@string/street" />
+    android:text="@string/street"
+    android:textColor="@android:color/white" />
 
   <TextView
     android:id="@+id/streetTextView"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:textColor="@android:color/white"
     tools:text="Street" />
 
   <TextView
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginTop="8dp"
-    android:text="@string/city" />
+    android:text="@string/city"
+    android:textColor="@android:color/white" />
 
   <TextView
     android:id="@+id/cityTextView"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:textColor="@android:color/white"
     tools:text="City" />
 
   <TextView
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginTop="8dp"
-    android:text="@string/state" />
+    android:text="@string/state"
+    android:textColor="@android:color/white" />
 
   <TextView
     android:id="@+id/stateTextView"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:textColor="@android:color/white"
     tools:text="State" />
 
   <TextView
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginTop="8dp"
-    android:text="@string/country" />
+    android:text="@string/country"
+    android:textColor="@android:color/white" />
 
   <TextView
     android:id="@+id/countryTextView"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:textColor="@android:color/white"
     tools:text="country" />
 
   <TextView
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginTop="8dp"
-    android:text="@string/zip_code" />
+    android:text="@string/zip_code"
+    android:textColor="@android:color/white" />
 
   <TextView
     android:id="@+id/zipCodeTextView"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:textColor="@android:color/white"
     tools:text="zipcode" />
 </LinearLayout>

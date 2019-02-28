@@ -23,7 +23,8 @@ class MainActivity : AppCompatActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_main)
-    placesApi.initialize(getString(R.string.mapsApiKey))
+//    placesApi.initialize(getString(R.string.mapsApiKey))
+    placesApi.initialize("YOUR_API_KEY")
     autoCompleteEditText.setAdapter(PlacesAutoCompleteAdapter(this, placesApi))
     autoCompleteEditText.onItemClickListener =
       AdapterView.OnItemClickListener { parent, _, position, _ ->
