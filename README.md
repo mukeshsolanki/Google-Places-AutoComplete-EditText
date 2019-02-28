@@ -10,7 +10,7 @@
 </p>
 
 <img src="https://raw.githubusercontent.com/mukeshsolanki/Places-AutoComplete-EditText/master/screenshots/ss1.png" width="270" height="480" /> &nbsp;&nbsp;
-<img src="https://raw.githubusercontent.com/mukeshsolanki/Places-AutoComplete-EditTextmaster/screenshots/ss2.png" width="270" height="480" /> &nbsp;&nbsp;
+<img src="https://raw.githubusercontent.com/mukeshsolanki/Places-AutoComplete-EditText/master/screenshots/ss2.png" width="270" height="480" /> &nbsp;&nbsp;
 <img src="https://raw.githubusercontent.com/mukeshsolanki/Places-AutoComplete-EditText/master/screenshots/ss3.png" width="270" height="480" /> &nbsp;&nbsp;
 
 # Supporting Places AutoComplete EditText
