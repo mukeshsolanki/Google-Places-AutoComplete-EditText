@@ -4,4 +4,6 @@
   <string name="street">Street</string>
   <string name="city">City</string>
   <string name="state">State</string>
+  <string name="country">Country</string>
+  <string name="zip_code">Zip Code</string>
 </resources>

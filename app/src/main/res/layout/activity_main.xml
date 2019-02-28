@@ -53,7 +53,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginTop="8dp"
-    android:text="Country" />
+    android:text="@string/country" />
 
   <TextView
     android:id="@+id/countryTextView"
@@ -65,7 +65,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginTop="8dp"
-    android:text="Zip Code" />
+    android:text="@string/zip_code" />
 
   <TextView
     android:id="@+id/zipCodeTextView"
