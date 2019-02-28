@@ -1,9 +1,9 @@
 <h1 align="center">Google Places AutoComplete EditText</h1>
 <p align="center">
-<a href="https://www.codacy.com/app/mukeshsolanki/Places-AutoComplete-EditText?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=mukeshsolanki/Places-AutoComplete-EditText&amp;utm_campaign=Badge_Grade"><img src="https://api.codacy.com/project/badge/Grade/e9f91e5cba1a4ebaaa51d532aa2afda8"/></a>
+  <a href="https://www.codacy.com/app/mukeshsolanki/Google-Places-AutoComplete-EditText?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=mukeshsolanki/Google-Places-AutoComplete-EditText&amp;utm_campaign=Badge_Grade"><img src="https://api.codacy.com/project/badge/Grade/e9f91e5cba1a4ebaaa51d532aa2afda8"/></a>
   <a href="https://jitpack.io/#mukeshsolanki/Google-Places-AutoComplete-EditText"> <img src="https://jitpack.io/v/mukeshsolanki/Google-Places-AutoComplete-EditText/month.svg" /></a>
   <a href="https://jitpack.io/#mukeshsolanki/Google-Places-AutoComplete-EditText"> <img src="https://jitpack.io/v/mukeshsolanki/Google-Places-AutoComplete-EditText.svg" /></a>
-  <a href="https://circleci.com/gh/mukeshsolanki/Places-AutoComplete-EditText/tree/master"> <img src="https://circleci.com/gh/mukeshsolanki/Places-AutoComplete-EditText/tree/master.svg?style=shield" /></a>
+  <a href="https://circleci.com/gh/mukeshsolanki/Google-Places-AutoComplete-EditText/tree/master"> <img src="https://circleci.com/gh/mukeshsolanki/Google-Places-AutoComplete-EditText/tree/master.svg?style=shield" /></a>
   <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-blue.svg"/></a>
   <br /><br />
     A simple library that can connect your autocomplete edittext to Google's places api
