@@ -23,11 +23,17 @@ class PlacesAutoCompleteAdapter(mContext: Context, val placesApi: PlaceAPI) :
   var resultList: ArrayList<Place>? = ArrayList()
 
   override fun getCount(): Int {
-    return resultList!!.size
+    return when {
+      resultList.isNullOrEmpty() -> 0
+      else -> resultList?.size!!
+    }
   }
 
   override fun getItem(position: Int): Place? {
-    return resultList!![position]
+    return when {
+      resultList.isNullOrEmpty() -> null
+      else -> resultList!![position]
+    }
   }
 
   override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
@@ -43,15 +49,16 @@ class PlacesAutoCompleteAdapter(mContext: Context, val placesApi: PlaceAPI) :
     } else {
       viewHolder = view.tag as ViewHolder
     }
-    val place = resultList!![position]
-    if (position != resultList!!.size - 1) {
-      viewHolder.description?.text = place.description
-      viewHolder.footerImageView?.visibility = View.GONE
-      viewHolder.description?.visibility = View.VISIBLE
-
-    } else {
-      viewHolder.footerImageView?.visibility = View.VISIBLE
-      viewHolder.description?.visibility = View.GONE
+    if (!resultList.isNullOrEmpty()) {
+      val place = resultList!![position]
+      if (position != resultList!!.size - 1) {
+        viewHolder.description?.text = place.description
+        viewHolder.footerImageView?.visibility = View.GONE
+        viewHolder.description?.visibility = View.VISIBLE
+      } else {
+        viewHolder.footerImageView?.visibility = View.VISIBLE
+        viewHolder.description?.visibility = View.GONE
+      }
     }
     return view!!
   }

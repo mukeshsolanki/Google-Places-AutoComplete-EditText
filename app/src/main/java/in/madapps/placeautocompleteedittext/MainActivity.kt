@@ -1,10 +1,10 @@
 package `in`.madapps.placeautocompleteedittext
 
+import `in`.madapps.placesautocomplete.PlaceAPI
+import `in`.madapps.placesautocomplete.adapter.PlacesAutoCompleteAdapter
 import `in`.madapps.placesautocomplete.listener.OnPlacesDetailsListener
 import `in`.madapps.placesautocomplete.model.Place
-import `in`.madapps.placesautocomplete.PlaceAPI
 import `in`.madapps.placesautocomplete.model.PlaceDetails
-import `in`.madapps.placesautocomplete.adapter.PlacesAutoCompleteAdapter
 import android.os.Bundle
 import android.widget.AdapterView
 import android.widget.Toast
@@ -16,6 +16,9 @@ import kotlinx.android.synthetic.main.activity_main.stateTextView
 import kotlinx.android.synthetic.main.activity_main.streetTextView
 import kotlinx.android.synthetic.main.activity_main.zipCodeTextView
 
+/**
+ * The main activity show cases an example of how to use the places auto complete api
+ */
 class MainActivity : AppCompatActivity() {
 
   val placesApi = PlaceAPI()
@@ -24,7 +27,7 @@ class MainActivity : AppCompatActivity() {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_main)
 //    placesApi.initialize(getString(R.string.mapsApiKey))
-    placesApi.initialize("YOUR_API_KEY")
+    placesApi.initialize("YOUR_API_KEY", this@MainActivity)
     autoCompleteEditText.setAdapter(
       PlacesAutoCompleteAdapter(
         this,
@@ -40,7 +43,7 @@ class MainActivity : AppCompatActivity() {
   }
 
   private fun getPlaceDetails(placeId: String) {
-    placesApi.fetchDetails(placeId, object :
+    placesApi.fetchPlaceDetails(placeId, object :
       OnPlacesDetailsListener {
       override fun onError(errorMessage: String) {
         Toast.makeText(this@MainActivity, errorMessage, Toast.LENGTH_SHORT).show()
