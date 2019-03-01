@@ -1,7 +1,7 @@
 package `in`.madapps.placesautocomplete.adapter
 
 import `in`.madapps.placesautocomplete.PlaceAPI
-import `in`.madapps.placesautocomplete.R.id
+import `in`.madapps.placesautocomplete.R
 import `in`.madapps.placesautocomplete.R.layout
 import `in`.madapps.placesautocomplete.model.Place
 import android.content.Context
@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Filter
 import android.widget.Filterable
+import android.widget.ImageView
 import android.widget.TextView
 
 /**
@@ -35,14 +36,23 @@ class PlacesAutoCompleteAdapter(mContext: Context, val placesApi: PlaceAPI) :
     if (view == null) {
       viewHolder = ViewHolder()
       val inflater = LayoutInflater.from(context)
-      view = inflater.inflate(layout.autocomplete_list_item, parent, false)
-      viewHolder.description = view.findViewById(id.autocompleteText) as TextView
+      view = inflater.inflate(R.layout.autocomplete_list_item, parent, false)
+      viewHolder.description = view.findViewById(R.id.autocompleteText) as TextView
+      viewHolder.footerImageView = view.findViewById(R.id.footerImageView) as ImageView
       view.tag = viewHolder
     } else {
       viewHolder = view.tag as ViewHolder
     }
     val place = resultList!![position]
-    viewHolder.description?.text = place.description
+    if (position != resultList!!.size - 1) {
+      viewHolder.description?.text = place.description
+      viewHolder.footerImageView?.visibility = View.GONE
+      viewHolder.description?.visibility = View.VISIBLE
+
+    } else {
+      viewHolder.footerImageView?.visibility = View.VISIBLE
+      viewHolder.description?.visibility = View.GONE
+    }
     return view!!
   }
 
@@ -60,6 +70,10 @@ class PlacesAutoCompleteAdapter(mContext: Context, val placesApi: PlaceAPI) :
         val filterResults = FilterResults()
         if (constraint != null) {
           resultList = placesApi.autocomplete(constraint.toString())
+
+
+          resultList?.add(Place("-1", "footer"))
+
           filterResults.values = resultList
           filterResults.count = resultList!!.size
         }
@@ -70,5 +84,6 @@ class PlacesAutoCompleteAdapter(mContext: Context, val placesApi: PlaceAPI) :
 
   internal class ViewHolder {
     var description: TextView? = null
+    var footerImageView: ImageView? = null
   }
 }
