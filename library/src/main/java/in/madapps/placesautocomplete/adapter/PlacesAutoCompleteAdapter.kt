@@ -1,5 +1,9 @@
-package `in`.madapps.placesautocomplete
+package `in`.madapps.placesautocomplete.adapter
 
+import `in`.madapps.placesautocomplete.PlaceAPI
+import `in`.madapps.placesautocomplete.R.id
+import `in`.madapps.placesautocomplete.R.layout
+import `in`.madapps.placesautocomplete.model.Place
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -13,7 +17,7 @@ import android.widget.TextView
  * Created by mukeshsolanki on 28/02/19.
  */
 class PlacesAutoCompleteAdapter(mContext: Context, val placesApi: PlaceAPI) :
-  ArrayAdapter<Place>(mContext, R.layout.autocomplete_list_item), Filterable {
+  ArrayAdapter<Place>(mContext, layout.autocomplete_list_item), Filterable {
 
   var resultList: ArrayList<Place>? = ArrayList()
 
@@ -31,8 +35,8 @@ class PlacesAutoCompleteAdapter(mContext: Context, val placesApi: PlaceAPI) :
     if (view == null) {
       viewHolder = ViewHolder()
       val inflater = LayoutInflater.from(context)
-      view = inflater.inflate(R.layout.autocomplete_list_item, parent, false)
-      viewHolder.description = view.findViewById(R.id.autocompleteText) as TextView
+      view = inflater.inflate(layout.autocomplete_list_item, parent, false)
+      viewHolder.description = view.findViewById(id.autocompleteText) as TextView
       view.tag = viewHolder
     } else {
       viewHolder = view.tag as ViewHolder

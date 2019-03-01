@@ -1,10 +1,10 @@
 package `in`.madapps.placeautocompleteedittext
 
-import `in`.madapps.placesautocomplete.OnPlacesDetailsListener
-import `in`.madapps.placesautocomplete.Place
+import `in`.madapps.placesautocomplete.listener.OnPlacesDetailsListener
+import `in`.madapps.placesautocomplete.model.Place
 import `in`.madapps.placesautocomplete.PlaceAPI
-import `in`.madapps.placesautocomplete.PlaceDetails
-import `in`.madapps.placesautocomplete.PlacesAutoCompleteAdapter
+import `in`.madapps.placesautocomplete.model.PlaceDetails
+import `in`.madapps.placesautocomplete.adapter.PlacesAutoCompleteAdapter
 import android.os.Bundle
 import android.widget.AdapterView
 import android.widget.Toast
@@ -25,7 +25,12 @@ class MainActivity : AppCompatActivity() {
     setContentView(R.layout.activity_main)
 //    placesApi.initialize(getString(R.string.mapsApiKey))
     placesApi.initialize("YOUR_API_KEY")
-    autoCompleteEditText.setAdapter(PlacesAutoCompleteAdapter(this, placesApi))
+    autoCompleteEditText.setAdapter(
+      PlacesAutoCompleteAdapter(
+        this,
+        placesApi
+      )
+    )
     autoCompleteEditText.onItemClickListener =
       AdapterView.OnItemClickListener { parent, _, position, _ ->
         val place = parent.getItemAtPosition(position) as Place
@@ -35,7 +40,8 @@ class MainActivity : AppCompatActivity() {
   }
 
   private fun getPlaceDetails(placeId: String) {
-    placesApi.fetchDetails(placeId, object : OnPlacesDetailsListener {
+    placesApi.fetchDetails(placeId, object :
+      OnPlacesDetailsListener {
       override fun onError(errorMessage: String) {
         Toast.makeText(this@MainActivity, errorMessage, Toast.LENGTH_SHORT).show()
       }

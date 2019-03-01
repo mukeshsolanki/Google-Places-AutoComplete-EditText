@@ -1,5 +1,9 @@
 package `in`.madapps.placesautocomplete
 
+import `in`.madapps.placesautocomplete.listener.OnPlacesDetailsListener
+import `in`.madapps.placesautocomplete.model.Address
+import `in`.madapps.placesautocomplete.model.Place
+import `in`.madapps.placesautocomplete.model.PlaceDetails
 import android.text.TextUtils
 import android.util.Log
 import androidx.annotation.Nullable
