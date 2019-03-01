@@ -57,7 +57,7 @@ To connect the AutoCompleteTextView to the places api create a PlaceApi object a
 
 ```java
  val placesApi = PlaceAPI()
- placesApi.initialize("YOUR_API_KEY")
+ placesApi.initialize("YOUR_API_KEY",context)
  autoCompleteEditText.setAdapter(PlacesAutoCompleteAdapter(this, placesApi))
 ```
 That's pretty much it and your all wrapped up. You have successfully connected the Places Api to the AutoCompleteTextView.
@@ -73,7 +73,7 @@ autoCompleteEditText.onItemClickListener =
 ```
 To get the details of the place selected you can set a listener to get the details
 ```
-placesApi.fetchDetails("placeId", object : OnPlacesDetailsListener {
+placesApi.fetchPlaceDetails("placeId", object : OnPlacesDetailsListener {
       override fun onError(errorMessage: String) {
         Toast.makeText(this@MainActivity, errorMessage, Toast.LENGTH_SHORT).show()
       }
