@@ -1,3 +1,7 @@
 <resources>
   <string name="app_name">library</string>
+  <string name="error_processing_places_api">Error processing Places API URL</string>
+  <string name="error_connecting_to_places_api">Error connecting to Places API</string>
+  <string name="error_cannot_process_json_results">Cannot process JSON results</string>
+  <string name="error_lib_not_initialized">Please initialize the api before using it</string>
 </resources>
