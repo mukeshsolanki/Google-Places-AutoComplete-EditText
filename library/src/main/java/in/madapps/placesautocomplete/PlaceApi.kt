@@ -24,9 +24,7 @@ import java.net.URLEncoder
 class PlaceAPI {
 
   fun autocomplete(input: String): ArrayList<Place>? {
-    if (TextUtils.isEmpty(apiKey)) {
-      throw RuntimeException(appContext?.getString(R.string.error_lib_not_initialized))
-    }
+    checkInitialization()
     val resultList: ArrayList<Place>? = null
     var conn: HttpURLConnection? = null
     val jsonResults = StringBuilder()
@@ -34,16 +32,15 @@ class PlaceAPI {
       val sb = StringBuilder(PLACES_API_BASE + TYPE_AUTOCOMPLETE + OUT_JSON)
       sb.append("?key=$apiKey")
       sb.append("&input=" + URLEncoder.encode(input, "utf8"))
-
       val url = URL(sb.toString())
       conn = url.openConnection() as HttpURLConnection
       val inputStreamReader = InputStreamReader(conn.inputStream)
-      constructAutoCompleteData(inputStreamReader, jsonResults)
-    } catch (e: MalformedURLException) {
-      Log.e(TAG, appContext?.getString(R.string.error_processing_places_api), e)
-      return resultList
-    } catch (e: IOException) {
-      Log.e(TAG, appContext?.getString(R.string.error_connecting_to_places_api), e)
+      constructData(inputStreamReader, jsonResults)
+    } catch (e: Exception) {
+      when (e) {
+        is MalformedURLException -> logError(e, R.string.error_processing_places_api)
+        is IOException -> logError(e, R.string.error_connecting_to_places_api)
+      }
       return resultList
     } finally {
       conn?.disconnect()
@@ -51,14 +48,21 @@ class PlaceAPI {
     return parseAutoCompleteData(jsonResults)
   }
 
+  private fun checkInitialization() {
+    if (TextUtils.isEmpty(apiKey)) {
+      throw RuntimeException(appContext?.getString(R.string.error_lib_not_initialized))
+    }
+  }
+
+  private fun logError(e: Exception, resource: Int) {
+    Log.e(TAG, appContext?.getString(resource), e)
+  }
+
   private fun parseAutoCompleteData(jsonResults: StringBuilder): ArrayList<Place>? {
     var resultList: ArrayList<Place>? = ArrayList()
     try {
-      // Create a JSON object hierarchy from the results
       val jsonObj = JSONObject(jsonResults.toString())
       val predsJsonArray = jsonObj.getJSONArray("predictions")
-
-      // Extract the Place descriptions from the results
       resultList = ArrayList(predsJsonArray.length())
       for (i in 0 until predsJsonArray.length()) {
         resultList.add(
@@ -80,7 +84,7 @@ class PlaceAPI {
     }
   }
 
-  private fun constructAutoCompleteData(
+  private fun constructData(
     inputStreamReader: InputStreamReader,
     jsonResults: StringBuilder
   ) {
@@ -105,10 +109,7 @@ class PlaceAPI {
    */
   @Nullable
   fun fetchPlaceDetails(placeId: String, listener: OnPlacesDetailsListener) {
-    if (TextUtils.isEmpty(apiKey)) {
-      throw RuntimeException(appContext?.getString(R.string.error_lib_not_initialized))
-    }
-
+    checkInitialization()
     Thread(Runnable {
       var conn: HttpURLConnection? = null
       val jsonResults = StringBuilder()
@@ -118,20 +119,32 @@ class PlaceAPI {
         sb.append("$PARAM_PLACE_ID$placeId")
         val url = URL(sb.toString())
         conn = url.openConnection() as HttpURLConnection
-        constructDetailsData(conn, jsonResults)
+        val inputStreamReader = InputStreamReader(conn.inputStream)
+        constructData(inputStreamReader, jsonResults)
         parseDetailsData(jsonResults, listener)
-      } catch (e: JSONException) {
-        parseDetailsError(jsonResults, listener, e)
-      } catch (e: MalformedURLException) {
-        Log.e(TAG, appContext?.getString(R.string.error_processing_places_api), e)
-        appContext?.getString(R.string.error_processing_places_api)?.let { listener.onError(it) }
-      } catch (e: IOException) {
-        Log.e(TAG, appContext?.getString(R.string.error_connecting_to_places_api), e)
-        appContext?.getString(R.string.error_connecting_to_places_api)?.let { listener.onError(it) }
+      } catch (e: Exception) {
+        when (e) {
+          is JSONException -> parseDetailsError(jsonResults, listener, e)
+          is MalformedURLException -> showDetailsError(
+            R.string.error_processing_places_api,
+            listener,
+            e
+          )
+          is IOException -> showDetailsError(R.string.error_connecting_to_places_api, listener, e)
+        }
       } finally {
         conn?.disconnect()
       }
     }).start()
+  }
+
+  private fun showDetailsError(
+    resource: Int,
+    listener: OnPlacesDetailsListener,
+    e: Exception
+  ) {
+    logError(e, resource)
+    appContext?.getString(resource)?.let { listener.onError(it) }
   }
 
   private fun parseDetailsError(
@@ -186,19 +199,6 @@ class PlaceAPI {
         addressType
       )
     )
-  }
-
-  private fun constructDetailsData(conn: HttpURLConnection, jsonResults: StringBuilder) {
-    val inputStreamReader = InputStreamReader(conn.inputStream)
-    var read: Int
-    val buff = CharArray(1024)
-    loop@ do {
-      read = inputStreamReader.read(buff)
-      when {
-        read != -1 -> jsonResults.append(buff, 0, read)
-        else -> break@loop
-      }
-    } while (true)
   }
 
   companion object {
