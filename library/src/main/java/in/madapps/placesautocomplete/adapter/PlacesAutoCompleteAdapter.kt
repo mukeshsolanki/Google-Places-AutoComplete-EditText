@@ -49,8 +49,13 @@ class PlacesAutoCompleteAdapter(mContext: Context, val placesApi: PlaceAPI) :
     } else {
       viewHolder = view.tag as ViewHolder
     }
+    val place = resultList!![position]
+    bindView(viewHolder, place, position)
+    return view!!
+  }
+
+  private fun bindView(viewHolder: ViewHolder, place: Place, position: Int) {
     if (!resultList.isNullOrEmpty()) {
-      val place = resultList!![position]
       if (position != resultList!!.size - 1) {
         viewHolder.description?.text = place.description
         viewHolder.footerImageView?.visibility = View.GONE
@@ -60,7 +65,6 @@ class PlacesAutoCompleteAdapter(mContext: Context, val placesApi: PlaceAPI) :
         viewHolder.description?.visibility = View.GONE
       }
     }
-    return view!!
   }
 
   override fun getFilter(): Filter {
