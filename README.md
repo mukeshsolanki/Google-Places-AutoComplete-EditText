@@ -57,8 +57,7 @@ Okay seems like you integrated the library in your project but **how do you use 
 To connect the AutoCompleteTextView to the places api create a PlaceApi object and attach it to the AutoCompleteTextView like-wise
 
 ```java
- val placesApi = PlaceAPI()
- placesApi.initialize("YOUR_API_KEY",context)
+ val placesApi = PlaceAPI.Builder().apiKey("YOUR_API_KEY").build(this@MainActivity)
  autoCompleteEditText.setAdapter(PlacesAutoCompleteAdapter(this, placesApi))
 ```
 That's pretty much it and your all wrapped up. You have successfully connected the Places Api to the AutoCompleteTextView.
