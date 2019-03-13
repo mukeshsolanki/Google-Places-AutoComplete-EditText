@@ -1,7 +1,7 @@
 <h1 align="center">Google Places AutoComplete EditText</h1>
 <p align="center">
   <a href="https://codeclimate.com/github/mukeshsolanki/Google-Places-AutoComplete-EditText/maintainability"><img src="https://api.codeclimate.com/v1/badges/dfa2ba8c5dfc5a0d1f77/maintainability" /></a>
-  <a href="https://www.codacy.com/app/mukeshsolanki/Google-Places-AutoComplete-EditText?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=mukeshsolanki/Google-Places-AutoComplete-EditText&amp;utm_campaign=Badge_Grade"><img src="https://api.codacy.com/project/badge/Grade/e9f91e5cba1a4ebaaa51d532aa2afda8"/></a>
+  <a href="https://www.codacy.com/app/mukeshsolanki/Google-Places-AutoComplete-EditText?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=mukeshsolanki/Google-Places-AutoComplete-EditText&amp;utm_campaign=Badge_Grade"><img src="https://api.codacy.com/project/badge/Grade/7ce61edcfd874752a1ffa137ec548f22"/></a>
   <a href="https://jitpack.io/#mukeshsolanki/Google-Places-AutoComplete-EditText"> <img src="https://jitpack.io/v/mukeshsolanki/Google-Places-AutoComplete-EditText/month.svg" /></a>
   <a href="https://jitpack.io/#mukeshsolanki/Google-Places-AutoComplete-EditText"> <img src="https://jitpack.io/v/mukeshsolanki/Google-Places-AutoComplete-EditText.svg" /></a>
   <a href="https://circleci.com/gh/mukeshsolanki/Google-Places-AutoComplete-EditText/tree/master"> <img src="https://circleci.com/gh/mukeshsolanki/Google-Places-AutoComplete-EditText/tree/master.svg?style=shield" /></a>
