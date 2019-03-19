@@ -22,7 +22,9 @@ import java.net.URLEncoder
 /**
  * Created by mukeshsolanki on 28/02/19.
  */
-class PlaceAPI private constructor(var apiKey: String?, var sessionToken: String?, var appContext: Context) {
+class PlaceAPI private constructor(
+  var apiKey: String?, var sessionToken: String?, var appContext: Context
+) {
   /**
    * Used to get details for the places api to be showed in the auto complete list
    */
@@ -70,7 +72,9 @@ class PlaceAPI private constructor(var apiKey: String?, var sessionToken: String
       } catch (e: Exception) {
         when (e) {
           is JSONException -> parseDetailsError(jsonResults, listener, e)
-          is MalformedURLException -> showDetailsError(R.string.error_processing_places_api, listener, e)
+          is MalformedURLException -> showDetailsError(
+            R.string.error_processing_places_api, listener, e
+          )
           is IOException -> showDetailsError(R.string.error_connecting_to_places_api, listener, e)
         }
       } finally {
@@ -106,10 +110,10 @@ class PlaceAPI private constructor(var apiKey: String?, var sessionToken: String
       resultList = ArrayList(predsJsonArray.length())
       for (i in 0 until predsJsonArray.length()) {
         resultList.add(
-            Place(
-                predsJsonArray.getJSONObject(i).getString("place_id"),
-                predsJsonArray.getJSONObject(i).getString("description")
-            )
+          Place(
+            predsJsonArray.getJSONObject(i).getString("place_id"),
+            predsJsonArray.getJSONObject(i).getString("description")
+          )
         )
       }
       return resultList
@@ -140,7 +144,9 @@ class PlaceAPI private constructor(var apiKey: String?, var sessionToken: String
     appContext.getString(resource).let { listener.onError(it) }
   }
 
-  private fun parseDetailsError(jsonResults: StringBuilder, listener: OnPlacesDetailsListener, e: Exception) {
+  private fun parseDetailsError(
+    jsonResults: StringBuilder, listener: OnPlacesDetailsListener, e: Exception
+  ) {
     val errorJson = JSONObject(jsonResults.toString())
     if (errorJson.has(ERROR_MESSAGE)) {
       Log.e(TAG, errorJson.getString(ERROR_MESSAGE), e)
@@ -155,30 +161,51 @@ class PlaceAPI private constructor(var apiKey: String?, var sessionToken: String
     val jsonObj = JSONObject(jsonResults.toString())
     val resultJsonObject = jsonObj.getJSONObject(RESULT)
     val addressArray = resultJsonObject.getJSONArray(ADDRESS_COMPONENTS)
+    val geometry = resultJsonObject.getJSONObject(GEOMETRY)
+    val location = geometry.getJSONObject(LOCATION)
+    val lat = location.getDouble(LAT)
+    val lng = location.getDouble(LNG)
+    val placeId = resultJsonObject.getString(PLACE_ID)
+    val url = resultJsonObject.getString(URL)
+    val utcOffset = resultJsonObject.getInt(UTC_OFFSET)
+    val vicinity = resultJsonObject.getString(VICINITY)
+    val plusCode = resultJsonObject.getJSONObject(PLUS_CODE)
+    val compoundPlusCode = plusCode.getString(COMPOUND_CODE)
+    val globalPlusCode = plusCode.getString(GLOBAL_CODE)
     val address = ArrayList<Address>()
+    getAddress(addressArray, address)
+    listener.onPlaceDetailsFetched(
+      PlaceDetails(
+        resultJsonObject.getString(ID), resultJsonObject.getString(NAME), address, lat,
+        lng, placeId, url, utcOffset, vicinity, compoundPlusCode, globalPlusCode
+      )
+    )
+  }
+
+  private fun getAddress(addressArray: JSONArray, address: ArrayList<Address>) {
     (0 until addressArray.length()).forEach { i ->
       val addressObject = addressArray.getJSONObject(i)
       val addressTypeArray = addressObject.getJSONArray(TYPES)
       val addressType = ArrayList<String>()
       parseAddressType(addressTypeArray, addressType, address, addressObject)
     }
-    listener.onPlaceDetailsFetched(
-        PlaceDetails(
-            resultJsonObject.getString(ID),
-            resultJsonObject.getString(NAME),
-            address
-        )
-    )
   }
 
-  private fun parseAddressType(addressTypeArray: JSONArray, addressType: ArrayList<String>, address: ArrayList<Address>, addressObject: JSONObject) {
-    (0 until addressTypeArray.length()).forEach { j -> addressType.add(addressTypeArray.getString(j)) }
+  private fun parseAddressType(
+    addressTypeArray: JSONArray, addressType: ArrayList<String>,
+    address: ArrayList<Address>, addressObject: JSONObject
+  ) {
+    (0 until addressTypeArray.length()).forEach { j ->
+      addressType.add(
+        addressTypeArray.getString(j)
+      )
+    }
     address.add(
-        Address(
-            addressObject.getString(LONG_NAME),
-            addressObject.getString(SHORT_NAME),
-            addressType
-        )
+      Address(
+        addressObject.getString(LONG_NAME),
+        addressObject.getString(SHORT_NAME),
+        addressType
+      )
     )
   }
 
@@ -192,9 +219,20 @@ class PlaceAPI private constructor(var apiKey: String?, var sessionToken: String
     private const val LONG_NAME = "long_name"
     private const val SHORT_NAME = "short_name"
     private const val ID = "id"
+    private const val PLACE_ID = "place_id"
+    private const val URL = "url"
+    private const val UTC_OFFSET = "utc_offset"
+    private const val VICINITY = "vicinity"
+    private const val PLUS_CODE = "plus_code"
+    private const val COMPOUND_CODE = "compound_code"
+    private const val GLOBAL_CODE = "global_code"
     private const val NAME = "name"
     private const val TYPES = "types"
     private const val ADDRESS_COMPONENTS = "address_components"
+    private const val GEOMETRY = "geometry"
+    private const val LOCATION = "location"
+    private const val LAT = "lat"
+    private const val LNG = "lng"
     private const val RESULT = "result"
     private const val ERROR_MESSAGE = "error_message"
   }

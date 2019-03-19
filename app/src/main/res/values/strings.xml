@@ -6,4 +6,12 @@
   <string name="state">State</string>
   <string name="country">Country</string>
   <string name="zip_code">Zip Code</string>
+  <string name="latitude">Latitude</string>
+  <string name="longitude">Longitude</string>
+  <string name="place_id">Place ID</string>
+  <string name="url">URL</string>
+  <string name="utc_offset">UTC Offset</string>
+  <string name="vicinity">Vicinity</string>
+  <string name="compound_code">Compound Code</string>
+  <string name="global_code">Global Code</string>
 </resources>

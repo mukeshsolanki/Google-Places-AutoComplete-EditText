@@ -85,4 +85,116 @@
     android:layout_height="wrap_content"
     android:textColor="@android:color/white"
     tools:text="zipcode" />
+
+  <TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="8dp"
+    android:text="@string/latitude"
+    android:textColor="@android:color/white" />
+
+  <TextView
+    android:id="@+id/latitudeTextView"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textColor="@android:color/white"
+    tools:text="Latitude" />
+
+  <TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="8dp"
+    android:text="@string/longitude"
+    android:textColor="@android:color/white" />
+
+  <TextView
+    android:id="@+id/longitudeTextView"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textColor="@android:color/white"
+    tools:text="Longitude" />
+
+  <TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="8dp"
+    android:text="@string/place_id"
+    android:textColor="@android:color/white" />
+
+  <TextView
+    android:id="@+id/placeIdTextView"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textColor="@android:color/white"
+    tools:text="Place ID" />
+
+  <TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="8dp"
+    android:text="@string/url"
+    android:textColor="@android:color/white" />
+
+  <TextView
+    android:id="@+id/urlTextView"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textColor="@android:color/white"
+    tools:text="URL" />
+
+  <TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="8dp"
+    android:text="@string/utc_offset"
+    android:textColor="@android:color/white" />
+
+  <TextView
+    android:id="@+id/utcOffsetTextView"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textColor="@android:color/white"
+    tools:text="UTC Offset" />
+
+  <TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="8dp"
+    android:text="@string/vicinity"
+    android:textColor="@android:color/white" />
+
+  <TextView
+    android:id="@+id/vicinityTextView"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textColor="@android:color/white"
+    tools:text="vicinity" />
+
+  <TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="8dp"
+    android:text="@string/compound_code"
+    android:textColor="@android:color/white" />
+
+  <TextView
+    android:id="@+id/compoundCodeTextView"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textColor="@android:color/white"
+    tools:text="Compound Code" />
+
+  <TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="8dp"
+    android:text="@string/global_code"
+    android:textColor="@android:color/white" />
+
+  <TextView
+    android:id="@+id/globalCodeTextView"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textColor="@android:color/white"
+    tools:text="Global Code" />
 </LinearLayout>
