@@ -84,6 +84,22 @@ placesApi.fetchPlaceDetails("placeId", object : OnPlacesDetailsListener {
     })
 ```
 
+## Places details you can get
+
+| Details | Value |
+| ----------| --- |
+| id | get the record id (not to be confused with the place id) |
+| name | gets the name of the place |
+| address | gets a list of different address types like street number, route, locality, country, postal code |
+| lat | gets the latitude of the place |
+| lng | gets the longitude of the place |
+| place id | gets the id of the place |
+| url | gets the maps url of the place |
+| utc offset | gets the utc offset of the place |
+| vicinity | gets the vicinity of the place |
+| compound plus code | gets the expanded Google plus code |
+| global plus code | gets the shortened Google plus code |
+
 ## Author
 Maintained by [Mukesh Solanki](https://www.github.com/mukeshsolanki)
 
