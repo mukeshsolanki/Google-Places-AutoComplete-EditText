@@ -64,8 +64,7 @@ class PlaceAPI private constructor(
       try {
         val sb = buildApiUrl(PLACES_API_BASE + TYPE_DETAIL + OUT_JSON)
         sb.append("$PARAM_PLACE_ID$placeId")
-        val url = URL(sb.toString())
-        conn = url.openConnection() as HttpURLConnection
+        conn = URL(sb.toString()).openConnection() as HttpURLConnection
         val inputStreamReader = InputStreamReader(conn.inputStream)
         constructData(inputStreamReader, jsonResults)
         parseDetailsData(jsonResults, listener)
