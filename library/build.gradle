@@ -7,10 +7,10 @@ group = 'com.github.mukeshsolanki'
 android {
   compileSdkVersion 28
   defaultConfig {
-    minSdkVersion 19
+    minSdkVersion 16
     targetSdkVersion 28
-    versionCode 5
-    versionName "0.0.5"
+    versionCode 6
+    versionName "0.0.6"
   }
 
   buildTypes {
