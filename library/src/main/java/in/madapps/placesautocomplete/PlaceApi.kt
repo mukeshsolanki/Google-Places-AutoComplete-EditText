@@ -158,6 +158,7 @@ class PlaceAPI private constructor(
 
   private fun parseDetailsData(jsonResults: StringBuilder, listener: OnPlacesDetailsListener) {
     val jsonObj = JSONObject(jsonResults.toString())
+extendlog(jsonObj.toString())
     val resultJsonObject = jsonObj.getJSONObject(RESULT)
     val addressArray = resultJsonObject.getJSONArray(ADDRESS_COMPONENTS)
     val geometry = resultJsonObject.getJSONObject(GEOMETRY)
@@ -168,19 +169,31 @@ class PlaceAPI private constructor(
     val url = resultJsonObject.getString(URL)
     val utcOffset = resultJsonObject.getInt(UTC_OFFSET)
     val vicinity = resultJsonObject.getString(VICINITY)
-    val plusCode = resultJsonObject.getJSONObject(PLUS_CODE)
-    val compoundPlusCode = plusCode.getString(COMPOUND_CODE)
-    val globalPlusCode = plusCode.getString(GLOBAL_CODE)
+    var compoundPlusCode =""
+    var globalPlusCode =""
+    if(resultJsonObject.has(PLUS_CODE)){
+      val plusCode = resultJsonObject.getJSONObject(PLUS_CODE)
+      compoundPlusCode = plusCode.getString(COMPOUND_CODE)
+      globalPlusCode = plusCode.getString(GLOBAL_CODE)
+    }
     val address = ArrayList<Address>()
     getAddress(addressArray, address)
     listener.onPlaceDetailsFetched(
-      PlaceDetails(
-        resultJsonObject.getString(ID), resultJsonObject.getString(NAME), address, lat,
+      PlaceDetails(resultJsonObject.getString(NAME), address, lat,
         lng, placeId, url, utcOffset, vicinity, compoundPlusCode, globalPlusCode
       )
     )
   }
 
+  private fun extendlog(veryLongString: String){
+    val maxLogSize = 1000
+    for (i in 0..veryLongString.length / maxLogSize) {
+      val start = i * maxLogSize
+      var end = (i + 1) * maxLogSize
+      end = if (end > veryLongString.length) veryLongString.length else end
+      Log.v("Json=>", veryLongString.substring(start, end))
+    }
+  }
   private fun getAddress(addressArray: JSONArray, address: ArrayList<Address>) {
     (0 until addressArray.length()).forEach { i ->
       val addressObject = addressArray.getJSONObject(i)
@@ -217,7 +230,6 @@ class PlaceAPI private constructor(
     private const val OUT_JSON = "/json"
     private const val LONG_NAME = "long_name"
     private const val SHORT_NAME = "short_name"
-    private const val ID = "id"
     private const val PLACE_ID = "place_id"
     private const val URL = "url"
     private const val UTC_OFFSET = "utc_offset"
